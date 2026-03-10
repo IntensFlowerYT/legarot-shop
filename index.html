@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legarot Shop</title>
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI,Arial;
+background:#f6f6f6;
+color:#333;
+}
+
+/* HEADER */
+header{
+position:sticky;
+top:0;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+z-index:100;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:26px;
+font-weight:700;
+color:#ff6f61;
+}
+
+.logo img{
+width:40px;
+height:40px;
+}
+
+nav a{
+margin:0 15px;
+font-weight:600;
+text-decoration:none;
+color:#333;
+}
+
+nav a:hover{
+color:#ff6f61;
+}
+
+.cart{
+background:#ff6f61;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+height:420px;
+background:linear-gradient(135deg,#ff6f61,#ff9472);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+margin:0;
+}
+
+.hero button{
+margin-top:20px;
+padding:14px 28px;
+border:none;
+background:white;
+color:#ff6f61;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* SEARCH */
+.search{
+margin:40px auto;
+text-align:center;
+}
+
+.search input{
+width:300px;
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+/* SECTIONS */
+section{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* PRODUCTS GRID */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+
+/* PRODUCT CARD */
+.product{
+background:white;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+padding:20px;
+text-align:center;
+transition:0.25s;
+position:relative;
+}
+
+.product:hover{
+transform:translateY(-6px);
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+.price{
+font-size:20px;
+font-weight:bold;
+margin-top:8px;
+}
+
+.product button{
+margin-top:10px;
+padding:10px 16px;
+border:none;
+background:#ff6f61;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* REVIEWS */
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.review{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* REVIEW FORM */
+.review-form{
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.review-form input,
+.review-form textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.review-form button{
+margin-top:10px;
+padding:10px 15px;
+background:#ff6f61;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* PAYMENT POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:300px;
+}
+
+/* FOOTER */
+footer{
+margin-top:60px;
+background:#111;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<img src="logo.png" alt="Logo">
+<span>LEGAROT</span>
+</div>
+
+<nav>
+<a href="#decor">Décorations</a>
+<a href="#food">Nourritures</a>
+<a href="#pens">Stylos</a>
+<a href="#reviews">Avis</a>
+</nav>
+
+<div class="cart" onclick="openPayment()">Commander</div>
+</header>
+
+<div class="hero">
+<h1>Bienvenue sur Legarot Shop</h1>
+<p>Des produits uniques que vous ne trouverez nulle part ailleurs</p>
+<button onclick="document.getElementById('decor').scrollIntoView()">Découvrir</button>
+</div>
+
+<div class="search">
+<input placeholder="Rechercher un produit...">
+</div>
+
+<!-- Décorations -->
+<section id="decor">
+<h2>Décorations</h2>
+<div class="products">
+<div class="product">
+<img src="sammyni.png" alt="Sammyni Fatini">
+<h3>Sammyni Fatini</h3>
+<div class="price">30 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+</div>
+</section>
+
+<!-- Nourritures -->
+<section id="food">
+<h2>Nourritures</h2>
+<div class="products">
+<div class="product">
+<img src="chewingum.png" alt="Chewingum 67 Goût Myrtille">
+<h3>Chewingum 67 Goût Myrtille</h3>
+<div class="price">0.80 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+</div>
+</section>
+
+<!-- Stylos -->
+<section id="pens">
+<h2>Stylos Legarot</h2>
+<div class="products">
+<div class="product">
+<img src="pasta.png" alt="Stylo Pasta">
+<h3>Stylo Pasta Legarot</h3>
+<div class="price">5 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+
+<div class="product">
+<img src="strawberries.png" alt="Stylo Strawberries">
+<h3>Stylo Strawberries Legarot</h3>
+<div class="price">5 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+
+<div class="product">
+<img src="pyramid.png" alt="Stylo Pyramid">
+<h3>Stylo Pyramid Legarot</h3>
+<div class="price">5 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+
+<div class="product">
+<img src="pizza.png" alt="Stylo Pizza">
+<h3>Stylo Pizza Legarot</h3>
+<div class="price">5 $</div>
+<button onclick="openPayment()">Commander</button>
+</div>
+</div>
+</section>
+
+<!-- Avis / Reviews -->
+<section id="reviews">
+<h2>Avis clients ⭐</h2>
+<div class="reviews" id="reviewsList">
+<div class="review">
+⭐ ⭐ ⭐ ⭐ ⭐
+<p>Super produits !</p>
+</div>
+</div>
+
+<div class="review-form">
+<h3>Laisser un avis</h3>
+<input id="name" placeholder="Votre nom">
+<textarea id="comment" placeholder="Votre avis"></textarea>
+<button onclick="addReview()">Envoyer</button>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Legarot Shop</p>
+<p>Pour acheter nos produits rendez vous à : Auchan Drive Semécourt (Metz)</p>
+</footer>
+
+<!-- Popup paiement -->
+<div class="popup" id="payment">
+<div class="popup-box">
+<h2>Moyen de paiement</h2>
+<select>
+<option>Carte bancaire</option>
+<option>PayPal</option>
+<option>Espèces</option>
+</select>
+<br><br>
+<button onclick="finish()">Terminé</button>
+</div>
+</div>
+
+<script>
+function openPayment(){
+document.getElementById("payment").style.display="flex";
+}
+function finish(){
+alert("Pour acheter nos produits rendez vous à : Auchan Drive Semécourt (Metz) !");
+document.getElementById("payment").style.display="none";
+}
+/* Ajouter un avis */
+function addReview(){
+let name=document.getElementById("name").value;
+let comment=document.getElementById("comment").value;
+if(name==""||comment==""){
+alert("Remplissez tout");
+return;
+}
+let div=document.createElement("div");
+div.className="review";
+div.innerHTML="<b>"+name+"</b><p>"+comment+"</p>";
+document.getElementById("reviewsList").appendChild(div);
+document.getElementById("name").value="";
+document.getElementById("comment").value="";
+}
+</script>
+
+</body>
+</html>
